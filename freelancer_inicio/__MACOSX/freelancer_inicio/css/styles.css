@@ -1,0 +1,289 @@
+:root { /*el root es para registrar nuestras variables de css puede ser una paleta de colores o cualquier valor*/
+    --blanco: #ffffff; /*estan en hex*/
+    --oscuro: #212121;
+    --primario: #FFC107; 
+    --secundario: #0097A7; 
+    --gris: #757575;
+    --grisClaro: #DFE9F3; 
+
+    --fuente-principal: 3.8rem; 
+}
+ 
+
+/* Globales */
+html {
+    font-size: 62.5%; /* font-size es para darle tamaño*/ /* no se recomienda usar pixeles sino rem porque estos se adaptan mejor a las diferentes pantallas*/
+/* es un hack para box model para que los rem sean mas faciles de usar */ /*pongo font-size 62.5%*/ /*este hack lo utilizo en todos mis proyectos, entonces cuando quiero poner un tamaño de 60px pongo 6rem y se va a adaptar mejor a los diferentes pantallas*/
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+}
+
+/*Scroll Snap*/
+.servicios,
+.navegacion-principal,
+.formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+*, *:before, *:after { /*es un box sizing para que todo mida bien, lo debo poner simepre*/
+    box-sizing: inherit;
+    }
+
+.contenedor {
+    max-width: 120rem; /*es para que al achicar la pagina no se vea raro la navegacion*/
+    margin: 0 auto; /*es para darle margen al contenido dentro de la barra, a "sobre mi" para que quede centrado con respecto los otros elementos*/
+    }
+    
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem; /*el padding es para engordar el elemento*/    
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center; 
+    border: none; 
+    }
+
+@media (min-width: 768px) { /*el mq hace que el boton sea adaptable a diferentes pantallas*/
+    .boton{
+        width: auto;
+        }
+    } 
+
+.boton:hover { /*el hover es para cuando te colocas sobre un elemento y te aparece la mano*/
+    cursor: pointer;
+}
+
+.sombra{ /*sombra del contenido prinicpal, use una de css matic y le agregue color, padding y border*/
+    -webkit-box-shadow: 0px 5px 15px 0px  rgba(0,0,0,1);
+    -moz-caja-sombra: 0px 5px 15px 0px rgba(0,0,0,1);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,1);
+    background-color: var(--blanco); 
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+
+/* Tipografia */ 
+body { 
+    font-size: 16px; /* el hack hizo que 1rem = 10px*/
+    font-family: "Krub", sans-serif; /*font-family: tipo de fuente, seleccioné el nombre de google fonts y lo pongo en el body para que aplique a todo el documento la misma fuente*/
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%); /*le da el color degrade de fondo al sitio web*/
+}
+
+h1{
+    font-size: 3.8rem;
+}
+
+h2{
+    font-size: 2.8rem;
+}
+
+h3{
+    font-size: 1.8rem;
+}
+
+h1, h2, h3{
+    text-align: center; /* text-align es para centrar el texto*/
+} 
+
+
+/* Titulos */
+.titulo span {
+    font-size: 2rem;   
+}
+
+/*Utilidades*/
+.w-sm-100 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+}
+}
+.flex{
+    display: flex;
+}
+
+.alinear-derecha{
+    justify-content: flex-end;
+}
+
+ 
+/* Navegacion principal */
+.nav-bg { /*es para darle color celeste a la navegacion principal. Lo puse aparte*/
+    background-color: var(--secundario);   
+}
+
+.navegacion-principal{
+    display: flex; /* para alinear elementos dentro de la barra de nav*/
+    flex-direction: column; /*es para distribuir elementos de arriba hacia abajo*/
+    justify-content: space-between; /*para separar elementos entre si*/
+}
+
+@media (min-width: 768px) { /*el mq hace que la navegacion principal sea adaptable a diferentes pantallas*/
+    .navegacion-principal{
+        flex-direction: row;
+    }
+}
+
+.navegacion-principal a {
+   color: var(--blanco);
+   text-align: center;
+   text-decoration: none;
+   font-size: 2rem;
+   font-weight: 700;
+   padding: 1rem;
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--oscuro); 
+}
+
+
+/* Hero (imagen) */
+.hero { 
+    background-image: url(../img/hero.jpg); /*dice donde se encuentra ubicada la img*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 480px;
+    position: relative; /*el padre siempre debe tener posicion relativa*/
+    margin-bottom: 2rem;
+}
+
+.contenido-hero{ /*es para darle transparencia a la img*/
+    position: absolute; /*el hijo siempre debe tener posicion absoluta*/
+    background-color: rgba(0,0,0, .7); /** Anterior**/ /*son el mismo color pero rgb es codigo mas avanzado*/
+    background-color: rgb(0 0 0 / 70%); 
+    width: 100%; /*indica donde se va a colocar la transparencia de manera simple*/
+    height: 100%;
+/*el siguiente codigo lo debo utilizar en todos mis proyectos para alinear un elemento hotizontal y verticalmente*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero h2,
+
+.contenido-hero p{ 
+    color: var(--blanco);
+}
+
+.contenido-hero.ubicacion{
+    display: flex;
+    align-items: flex-end;
+}
+
+
+/*Servicios*/
+@media (min-width: 768px) {
+    .servicios{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /*significan 3 fracciones*/
+        column-gap: 1rem;
+    }
+}
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: 400; /*400 es igual a normal*/
+}
+
+.servicio p {
+    line-height: 2; 
+    text-align: center; 
+}
+
+.servicio .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+/*Contacto*/
+.formulario {
+    background-color: var(--gris);
+    width: min(60rem, 100% ); /*min utiliza el valor mas pequeño. El min le asigna el ancho al formulario, tomando el numero que sea mas pequeño entre 60rem o el 100(1160px) min compara y dice ¿que es mas pequeño 60rem o 1160px? y dice que es 60rem y los toma--> te ahorras media queris%*/
+    margin: 0 auto; /*usar margin siempre que tenga un formulario y cuyo padre (seria "contacto") no es un display flex (en ese casi iria justify content)*/
+    padding: 2rem;
+    border-radius: 1rem;
+
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: ;
+        column-gap: 1rem;
+    }   
+    .campo:nth-child(3),
+    .campo:nth-child(4){ /*esto es para ponerle estilo solo al correo y no tener que hacer una clase extra*/
+        grid-column: 1 / 3; /*que vaya de la columna 1 a la 3*/
+    } 
+}
+
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.campo textarea {
+    height: 20rem;
+}
+.enviar .boton{
+    width: 100%;
+}
+
+/*Footer*/
+.footer{ 
+    text-align: center;
+}
